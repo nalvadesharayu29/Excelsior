@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { CustomMaterialModule } from './core/material.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Home/Home.component';
@@ -14,7 +17,8 @@ import { MutualFundComponent } from './Financial Services/mutual-fund/mutual-fun
 import { appRouts } from './routes';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { ItrLoginSignupComponent } from './Financial Services/ITR/itr-login-signup/itr-login-signup.component';
+import { ItrLoginComponent } from './Financial Services/ITR/itr-login/itr-login.component';
+import { ItrRegisterComponent } from './Financial Services/ITR/itr-register/itr-register.component';
 
 @NgModule({
    declarations: [
@@ -27,13 +31,16 @@ import { ItrLoginSignupComponent } from './Financial Services/ITR/itr-login-sign
       MutualFundComponent,
       NavbarComponent,
       FooterComponent,
-      ItrLoginSignupComponent
+      ItrLoginComponent,
+      ItrRegisterComponent
    ],
    imports: [
       BrowserModule,
       FormsModule,
       ReactiveFormsModule,
-      RouterModule.forRoot(appRouts)
+      RouterModule.forRoot(appRouts),
+      BrowserAnimationsModule,
+      CustomMaterialModule,
    ],
    providers: [],
    bootstrap: [

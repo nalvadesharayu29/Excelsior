@@ -1,0 +1,13 @@
+.example-card {
+    /* max-width: 400px; */
+  }
+  
+  .example-header-image {
+    background-image: url('../../../../assets/images/Excelsior_logo1.jpg');
+    background-size: cover;
+  }
+  .mat-card-image {
+    width: 80%;
+    margin: 0;
+    height: -webkit-fill-available;
+}

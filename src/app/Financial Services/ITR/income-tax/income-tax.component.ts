@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-income-tax',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IncomeTaxComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  loginClick() {
+    this.router.navigate(['/financialServices/ITR/login']);
+  }
 }

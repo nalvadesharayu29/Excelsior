@@ -1,3 +1,20 @@
-<app-navbar></app-navbar>
-
+<app-navbar [btnLoginClick] = 'false'></app-navbar>
+<mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>Income Tax Returns</mat-card-title>
+          <mat-card-subtitle>ITR filling</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="../../../../assets/images/ITR/ITR.jpg" alt="">
+        <mat-card-content>
+          <p>
+           We help you to fill your IT Return.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <!-- <button mat-button>LIKE</button> -->
+          <button  mat-raised-button color="primary" (click)="loginClick()">Get In touch with Us.</button>
+        </mat-card-actions>
+      </mat-card>
+      
 

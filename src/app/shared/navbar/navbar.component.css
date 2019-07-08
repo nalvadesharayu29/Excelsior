@@ -1,14 +1,26 @@
-.site-logo .text-primary{
+.example-icon {
+    padding: 0 14px;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  .logoimg {
+      height: -webkit-fill-available;
+      margin-left: 50px;
+  }
+  .navBar {
+      background-color: black;
+
+  }
+  .mat-button {
+      background-color: #007bff;
+      margin-right: 10px;
+  }
+  .text-primary {
+    color: #007bff!important;
     font-size: -webkit-xxx-large;
     font-family: "trebuchet ms";
     border-bottom: 1px solid #007bff;
-}
-
-.position {
-    color: #007bff;
-}
-
-.site-navbar {
-    background: black;
-    position: fixed;
+    margin-left: 30px;
 }

@@ -1,0 +1,99 @@
+<app-navbar [btnLoginClick] = 'true'></app-navbar>
+<mat-card class="example-card">
+
+  <mat-card-header class="info-color">
+    <mat-card-title>Sign Up</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="PAN Number" [formControl]="panNo"
+               [errorStateMatcher]="matcher" required maxlength="10">
+        <!-- <mat-hint>Errors appear instantly!</!--> 
+        <mat-error *ngIf="panNo.hasError('pattern') && !emailFormControl.hasError('required')">
+          Please enter a valid PAN Number
+        </mat-error>
+        <mat-error *ngIf="panNo.hasError('required')">
+          PAN Number is <strong>required</strong>
+          </mat-error>
+          </mat-form-field>
+          
+          <!-- First name -->
+          <mat-form-field class="example-half-width">
+            <input matInput placeholder="First Name" [formControl]="firstName" class="form-control" required
+              [errorStateMatcher]="matcher">
+          </mat-form-field>
+          <!-- Last name -->
+          <mat-form-field class="example-half-width">
+            <input matInput placeholder="Last Name" [formControl]="lastName" class="form-control" required
+              [errorStateMatcher]="matcher">
+          </mat-form-field>
+
+      <!-- E-mail -->
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Enter your email" [formControl]="emailID" required>
+          <mat-error *ngIf="emailID.hasError('email') && !emailFormControl.hasError('required')">
+              Please enter a valid Email ID
+            </mat-error>
+            <mat-error *ngIf="emailID.hasError('required')">
+              Email ID Number is <strong>required</strong>
+              </mat-error>
+        </mat-form-field>
+
+      <!-- Mobile Number -->
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Enter your Mobile Number" [formControl]="mobNo" required maxlength='10'>
+            <mat-error *ngIf="emailID.hasError('required')">
+              Email ID Number is <strong>required</strong>
+              </mat-error>
+        </mat-form-field>
+
+      <!-- Password -->
+      <mat-form-field class="example-full-width">
+          <input matInput type="password" placeholder="password" [formControl]="password"
+                 [errorStateMatcher]="matcher" required>
+          <mat-hint>Password should be minimum 8 character </mat-hint>
+          <mat-error *ngIf="password.hasError('minLength') && !password.hasError('required')">
+            Please enter a valid Password
+          </mat-error>
+          <mat-error *ngIf="password.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+      <!-- Sign up button -->
+      <mat-card-actions>
+          <button mat-raised-button color="primary">Sign Up</button>
+          <button mat-raised-button color="accent" (click)= "back()">Back</button>
+        </mat-card-actions>
+
+      <!-- Social register -->
+      <!-- <p>or sign up with:</p>
+      <button mat-mini-fab color="primary">
+          <mat-icon>facebook</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary">
+          <mat-icon>twitter</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary">
+          <mat-icon>linkedin</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary">
+          <mat-icon>github</mat-icon>
+        </button>  -->
+      <hr>
+
+      <!-- Terms of service -->
+      <p>By clicking
+        <em>Sign up</em> you agree to our
+        <a href="" target="_blank">terms of service</a>. </p>
+
+    </form>
+    <!-- Form -->
+
+  </mat-card-content>
+
+</mat-card>
+<!-- Material form register -->

@@ -5,7 +5,8 @@ import { InsuranceComponent } from './Financial Services/insurance/insurance.com
 import { MutualFundComponent } from './Financial Services/mutual-fund/mutual-fund.component';
 import { DivyankaFabricsComponent } from './Divyanka Fabrics/divyanka-fabrics/divyanka-fabrics.component';
 import { HomeComponent } from './Home/Home.component';
-import { ItrLoginSignupComponent } from './Financial Services/ITR/itr-login-signup/itr-login-signup.component';
+import { ItrLoginComponent } from './Financial Services/ITR/itr-login/itr-login.component';
+import { ItrRegisterComponent } from './Financial Services/ITR/itr-register/itr-register.component';
 
 export const appRouts: Routes = [
     { path: '', component: HomeComponent},
@@ -15,7 +16,8 @@ export const appRouts: Routes = [
         // canActivate: [AuthGuard],
         children: [
             { path: 'ITR', component: IncomeTaxComponent},
-            { path: 'ITR/login', component: ItrLoginSignupComponent},
+            { path: 'ITR/login', component: ItrLoginComponent},
+            { path: 'ITR/register', component: ItrRegisterComponent},
             { path: 'GST', component: GstComponent},
             { path: 'insurance', component: InsuranceComponent},
             { path: 'mutualFund', component: MutualFundComponent},
