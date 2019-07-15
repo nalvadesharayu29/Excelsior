@@ -5,7 +5,17 @@
     <span class="align-center"><h1 class="text-primary">Excelsior</h1></span>
     <span class="example-spacer"></span>
 
-    <button *ngIf="!btnLoginClick" mat-button class="btnLognIN" (click)="loginClick()">Log IN</button>
+    <button *ngIf="!btnLoginClick && !loggedIn()" mat-button class="btnLognIN" (click)="loginClick()">Log IN / Sign UP</button>
+    <ul *ngIf="loggedIn()" class="navbar-nav mr-right">     
+        <li class="nav-item dropdown" dropdown>
+          <a class="nav-link dropdown-toggle" (click)="logout()" id="dropdown03" dropdownToggle>Welcome {{authService.decodedToken?.unique_name}}</a>
+          <!-- <ul class="dropdown-menu" aria-labelledby="dropdown03" *dropdownMenu>
+            <li><a class="dropdown-item" [routerLink]="['/user/edit']" routerLinkActive="router-link-active" ><i class="fa fa-user"></i>Edit Profile</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a class="dropdown-item" (click)= "logout()"><i class="fa fa-sign-out"></i>Logout</a></li>
+          </ul> -->
+        </li>
+    </ul>
     <!-- <button mat-button>Contact</button> -->
   </mat-toolbar-row>
 </mat-toolbar>

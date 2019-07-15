@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import { AuthService } from 'src/app/_services/ITR/auth.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -11,40 +12,43 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-itr-login',
-  templateUrl: './itr-login.component.html',
-  styleUrls: ['./itr-login.component.css']
+  selector: "app-itr-login",
+  templateUrl: "./itr-login.component.html",
+  styleUrls: ["./itr-login.component.css"]
 })
 export class ItrLoginComponent implements OnInit {
-  username: string;
-  password: string;
+  model: any = {};
   showSpinner: boolean;
-  emailFormControl = new FormControl('', [
+  emailFormControl = new FormControl("", [
     Validators.required,
-    Validators.pattern('[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}')
+    Validators.pattern("[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}")
   ]);
-  passwordFormControl = new FormControl('', [
+  passwordFormControl = new FormControl("", [
     Validators.required,
-    Validators.minLength(8),
+    Validators.minLength(8)
   ]);
 
   matcher = new MyErrorStateMatcher();
 
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router, private authService: AuthService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   login(): void {
-    if (this.username == 'admin' && this.password == 'admin') {
-    //  this.router.navigate(['user']);
-    } else {
-      alert('Invalid credentials');
-    }
+    this.authService.login(this.model).subscribe(
+      data => {
+        alert("Logged in successfully");
+      },
+      error => {
+        alert("Failed to login");
+      },
+      () => {
+        this.router.navigate(['/ITR/User-Dashboard']);
+      }
+    );
   }
 
   back() {
-    this.router.navigate(['/financialServices/ITR']);
+    this.router.navigate(["/ITR"]);
   }
 }

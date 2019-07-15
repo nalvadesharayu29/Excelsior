@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/_services/ITR/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,12 +9,25 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   @Input() btnLoginClick: boolean;
-  constructor(private router: Router) { }
+  constructor(private router: Router, public authService: AuthService) { }
 
   ngOnInit() {
   }
 
   loginClick() {
-    this.router.navigate(['/financialServices/ITR/login']);
+    this.router.navigate(['/ITR/login']);
+  }
+
+  loggedIn() {
+    return this.authService.loggedIn();
+  }
+
+  logout() {
+    this.authService.userToken = null;
+    this.authService.currentUser = null;
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.router.navigate(['/ITR']);
+
   }
 }

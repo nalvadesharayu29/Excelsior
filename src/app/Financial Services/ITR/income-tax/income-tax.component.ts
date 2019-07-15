@@ -14,6 +14,6 @@ export class IncomeTaxComponent implements OnInit {
   }
 
   loginClick() {
-    this.router.navigate(['/financialServices/ITR/login']);
+    this.router.navigate(['/ITR/login']);
   }
 }

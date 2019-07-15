@@ -8,11 +8,11 @@
 
   <mat-card-content>
 
-    <form class="example-form">
+    <form #loginForm="ngForm" (ngSubmit)="login()" class="example-form">
 
       <mat-form-field class="example-full-width">
         <input matInput placeholder="PAN Number" [formControl]="emailFormControl"
-               [errorStateMatcher]="matcher" required maxlength="10">
+               [errorStateMatcher]="matcher" required maxlength="10" [(ngModel)]="model.panNo">
         <!-- <mat-hint>Errors appear instantly!</!--> 
         <mat-error *ngIf="emailFormControl.hasError('pattern') && !emailFormControl.hasError('required')">
           Please enter a valid PAN Number
@@ -24,7 +24,7 @@
 
       <mat-form-field class="example-full-width">
         <input matInput type="password" placeholder="password" [formControl]="passwordFormControl"
-               [errorStateMatcher]="matcher" required>
+               [errorStateMatcher]="matcher" required [(ngModel)]="model.password">
         <!-- <mat-hint>Password should be minimum </mat-hint> -->
         <mat-error *ngIf="passwordFormControl.hasError('minLength') && !passwordFormControl.hasError('required')">
           Please enter a valid Password
@@ -54,7 +54,7 @@
 
       <!-- Register -->
       <p>Not a member?
-        <a href="/financialServices/ITR/register">Register</a>
+        <a href="/ITR/register">Register</a>
       </p>
 
       <!-- Social login -->

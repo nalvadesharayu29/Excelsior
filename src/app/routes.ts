@@ -7,22 +7,25 @@ import { DivyankaFabricsComponent } from './Divyanka Fabrics/divyanka-fabrics/di
 import { HomeComponent } from './Home/Home.component';
 import { ItrLoginComponent } from './Financial Services/ITR/itr-login/itr-login.component';
 import { ItrRegisterComponent } from './Financial Services/ITR/itr-register/itr-register.component';
+import { ItrFormComponent } from './Financial Services/ITR/itr-form/itr-form.component';
+import { ItrUserDashboardComponent } from './Financial Services/ITR/itr-user-dashboard/itr-user-dashboard.component';
+import { AuthGuard } from './_guards/auth.guard';
 
 export const appRouts: Routes = [
     { path: '', component: HomeComponent},
-    {
-        path: 'financialServices',
-        runGuardsAndResolvers: 'always',
-        // canActivate: [AuthGuard],
-        children: [
             { path: 'ITR', component: IncomeTaxComponent},
             { path: 'ITR/login', component: ItrLoginComponent},
             { path: 'ITR/register', component: ItrRegisterComponent},
+            { path: 'ITR/ITR-Form', component: ItrFormComponent, canActivate: [AuthGuard]},
+            { path: 'ITR/User-Dashboard', component: ItrUserDashboardComponent, canActivate: [AuthGuard]},
+
             { path: 'GST', component: GstComponent},
+
             { path: 'insurance', component: InsuranceComponent},
+
             { path: 'mutualFund', component: MutualFundComponent},
-        ]
-    },
+
     { path: 'divyankaFabrics', component: DivyankaFabricsComponent},
+
     { path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];
