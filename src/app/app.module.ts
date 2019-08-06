@@ -24,6 +24,8 @@ import { ItrFormComponent } from './Financial Services/ITR/itr-form/itr-form.com
 import { ItrUserDashboardComponent } from './Financial Services/ITR/itr-user-dashboard/itr-user-dashboard.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { AuthService } from './_services/ITR/auth.service';
+import { ErrorInterceptor, ErrorInterceptorProvider } from './_services/error.interceptor';
+import { AlertifyService } from './_services/shared/alertify.service';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -62,7 +64,9 @@ export function tokenGetter() {
    ],
    providers: [
       AuthService,
-      AuthGuard
+      AuthGuard,
+      ErrorInterceptorProvider,
+      AlertifyService
    ],
    bootstrap: [
       AppComponent

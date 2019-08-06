@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { AuthService } from 'src/app/_services/ITR/auth.service';
+import { AlertifyService } from 'src/app/_services/shared/alertify.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -30,17 +31,18 @@ export class ItrLoginComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService,
+              private alertifyService: AlertifyService) {}
 
   ngOnInit() {}
 
   login(): void {
     this.authService.login(this.model).subscribe(
       data => {
-        alert("Logged in successfully");
+        this.alertifyService.success("Logged in successfully");
       },
       error => {
-        alert("Failed to login");
+        this.alertifyService.error("Failed to login");
       },
       () => {
         this.router.navigate(['/ITR/User-Dashboard']);

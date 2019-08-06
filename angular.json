@@ -28,7 +28,8 @@
             ],
             "scripts": [
               "src/assets/js/index.js",
-              "../Excelsior-UI/node_modules/hammerjs/hammer.min.js"
+              "../Excelsior-UI/node_modules/hammerjs/hammer.min.js",
+              "../Excelsior-UI/node_modules/alertifyjs/build/alertify.min.js"
             ]
           },
           "configurations": {

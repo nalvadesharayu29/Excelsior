@@ -21,7 +21,7 @@
     color: #007bff!important;
     font-size: -webkit-xxx-large;
     font-family: "trebuchet ms";
-    border-bottom: 1px solid #007bff;
+    border-bottom: 3px solid #007bff;
     margin-left: 30px;
 }
 .dropdown-menu li,.dropdown-toggle {

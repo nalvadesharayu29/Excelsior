@@ -16,7 +16,7 @@ export const appRouts: Routes = [
             { path: 'ITR', component: IncomeTaxComponent},
             { path: 'ITR/login', component: ItrLoginComponent},
             { path: 'ITR/register', component: ItrRegisterComponent},
-            { path: 'ITR/ITR-Form', component: ItrFormComponent, canActivate: [AuthGuard]},
+            { path: 'ITR/ITR-Form', component: ItrFormComponent},
             { path: 'ITR/User-Dashboard', component: ItrUserDashboardComponent, canActivate: [AuthGuard]},
 
             { path: 'GST', component: GstComponent},

@@ -11,6 +11,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
   }
 }
+
 @Component({
   selector: 'app-itr-register',
   templateUrl: './itr-register.component.html',
@@ -63,15 +64,15 @@ export class ItrRegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       this.user = Object.assign({}, this.registerForm.value);
       console.log('register: ', this.user);
-      this.authservice.register(this.user)
-      .subscribe(() => {
-            alert('Registration successfull');
-          }, error => {
-            alert(error);
-          }, () => {
-              localStorage.setItem('registeredUser', JSON.stringify(this.user));
-              this.router.navigate(['/ITR/ITR-Form']);
-          });
+      // this.authservice.register(this.user)
+      // .subscribe(() => {
+      //       alert('Registration successfull');
+      //     }, error => {
+      //       alert(error);
+      //     }, () => {
+      //         localStorage.setItem('registeredUser', JSON.stringify(this.user));
+      //         this.router.navigate(['/ITR/ITR-Form']);
+      //     });
     }
   }
 }

@@ -1,3 +1,117 @@
-<p>
-  itr-form works!
-</p>
+<app-navbar [btnLoginClick]='true'></app-navbar>
+<mat-card class="example-card">
+
+  <!-- <mat-card-header class="info-color">
+    <mat-card-title>Sign Up</mat-card-title>
+  </mat-card-header> -->
+
+  <mat-card-content>
+
+    <form class="example-form" [formGroup]="userDetailsForm" (ngSubmit)="saveUserDetails()">
+
+      <!-- First name -->
+      <mat-form-field class="example-3-width">
+        <input matInput placeholder="First Name" formControlName="firstName" class="form-control" required
+          [errorStateMatcher]="matcher">
+      </mat-form-field>
+      <!-- Middle name -->
+      <mat-form-field class="example-3-width">
+        <input matInput placeholder="Middle Name" formControlName="middleName" class="form-control" required
+          [errorStateMatcher]="matcher">
+        <mat-error *ngIf="userDetailsForm.get('middleName').hasError('required')">
+          First Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <!-- Last name -->
+      <mat-form-field class="example-3-width">
+        <input matInput placeholder="Last Name" formControlName="lastName" class="form-control" required
+          [errorStateMatcher]="matcher">
+        <mat-error *ngIf="userDetailsForm.get('lastName').hasError('required')">
+          Last Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <!-- PAN-->
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="PAN Number" formControlName="panNo" [errorStateMatcher]="matcher" required
+          maxlength="10">
+          <mat-error *ngIf="userDetailsForm.get('panNo').hasError('required')">
+            Last Name is <strong>required</strong>
+          </mat-error>
+      </mat-form-field>
+
+      <!-- Aadhar No-->
+      <mat-form-field *ngIf="isAadhar" class="example-full-width">
+        <input matInput placeholder="Aadhar Number" formControlName="aadharNo" [errorStateMatcher]="matcher" required
+          maxlength="12">
+          <mat-error *ngIf="userDetailsForm.get('aadharNo').hasError('pattern') && !userDetailsForm.get('aadharNo').hasError('required')">
+            Please enter a valid Aadhar Number
+          </mat-error>
+          <mat-error *ngIf="userDetailsForm.get('aadharNo').hasError('required')">
+            Aadhar Number is <strong>required</strong>
+            </mat-error>
+      </mat-form-field>
+      
+      <mat-checkbox formControlName="isAadhar" (change)="isAadharChanged()">Don't have Aadhar Card?</mat-checkbox>
+      
+      <!-- Aadhar Enrol ID-->
+      <mat-form-field *ngIf="!isAadhar" class="example-full-width">
+        <input matInput type="number" placeholder="Aadhar Enrolment ID" formControlName="aadharEnrolID" [errorStateMatcher]="matcher">
+        <mat-hint>Note: If Aadhaar Number is not yet allotted, then Aadhaar Enrolment Id is required. All the digits in enrolment ID & Date and time of enrolment to be entered continuously. For example Enrolment ID: 1234/12345/12345 & Date/Time of enrolment: 01/12/2016 11:50:22 to be entered as 1234123451234501122016115022</mat-hint>
+      </mat-form-field>
+
+      <!-- DOB-->
+      <mat-form-field class="example-full-width dob">
+        <input matInput [matDatepicker]="picker" placeholder="Choose your DOB" formControlName="dateOfBirth">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <!-- E-mail -->
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Enter your email" formControlName="emailID" required>
+      </mat-form-field>
+
+      <!-- Mobile Number -->
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Enter your Mobile Number" formControlName="mobNo" required
+          maxlength='10'>
+          <mat-error *ngIf="userDetailsForm.get('mobNo').hasError('pattern') && !userDetailsForm.get('mobNo').hasError('required')">
+            Please enter a valid Mobile Number
+          </mat-error>
+      </mat-form-field>
+
+      <!-- Address -->
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Address(Area and Street)" formControlName="area" required></textarea>
+      </mat-form-field>
+      <mat-form-field class="example-half-width">
+        <input matInput placeholder="Landmark(Optional)" formControlName="landmark">
+      </mat-form-field>
+      <mat-form-field class="example-half-width">
+        <input matInput placeholder="City/District/Town" formControlName="city" required>
+      </mat-form-field>
+      <mat-form-field class="example-half-width">
+        <input matInput placeholder="State" formControlName="state" required>
+      </mat-form-field>
+      <mat-form-field class="example-half-width">
+        <input matInput placeholder="Country" formControlName="country" required>
+      </mat-form-field>
+      <mat-form-field class="example-half-width">
+        <input matInput type="number" maxlength="6" placeholder="Pincode" formControlName="zip" required>
+      </mat-form-field>
+
+      
+
+      <!-- Sign up button -->
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [disabled]="!userDetailsForm.valid">Save</button>
+      </mat-card-actions>
+
+      <hr>
+    </form>
+    <!-- Form -->
+
+  </mat-card-content>
+
+</mat-card>
