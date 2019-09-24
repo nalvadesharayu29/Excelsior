@@ -13,13 +13,16 @@
       <mat-form-field class="example-3-width">
         <input matInput placeholder="First Name" formControlName="firstName" class="form-control" required
           [errorStateMatcher]="matcher">
+          <mat-error *ngIf="userDetailsForm.get('middleName').hasError('required')">
+            First Name is <strong>required</strong>
+          </mat-error>
       </mat-form-field>
       <!-- Middle name -->
       <mat-form-field class="example-3-width">
         <input matInput placeholder="Middle Name" formControlName="middleName" class="form-control" required
           [errorStateMatcher]="matcher">
         <mat-error *ngIf="userDetailsForm.get('middleName').hasError('required')">
-          First Name is <strong>required</strong>
+          Middle Name is <strong>required</strong>
         </mat-error>
       </mat-form-field>
       <!-- Last name -->
@@ -29,7 +32,16 @@
         <mat-error *ngIf="userDetailsForm.get('lastName').hasError('required')">
           Last Name is <strong>required</strong>
         </mat-error>
-      </mat-form-field>
+        </mat-form-field>
+        
+        <!-- Father name -->
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Father Name" formControlName="fatherName" class="form-control" required
+            [errorStateMatcher]="matcher">
+          <mat-error *ngIf="userDetailsForm.get('fatherName').hasError('required')">
+            Father Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
 
       <!-- PAN-->
       <mat-form-field class="example-full-width">
@@ -42,12 +54,12 @@
 
       <!-- Aadhar No-->
       <mat-form-field *ngIf="isAadhar" class="example-full-width">
-        <input matInput placeholder="Aadhar Number" formControlName="aadharNo" [errorStateMatcher]="matcher" required
+        <input matInput placeholder="Aadhar Number *" formControlName="aadharNo" [errorStateMatcher]="matcher"
           maxlength="12">
           <mat-error *ngIf="userDetailsForm.get('aadharNo').hasError('pattern') && !userDetailsForm.get('aadharNo').hasError('required')">
             Please enter a valid Aadhar Number
           </mat-error>
-          <mat-error *ngIf="userDetailsForm.get('aadharNo').hasError('required')">
+          <mat-error *ngIf="userDetailsForm.controls['aadharNo'].getValue == ''">
             Aadhar Number is <strong>required</strong>
             </mat-error>
       </mat-form-field>
@@ -56,8 +68,12 @@
       
       <!-- Aadhar Enrol ID-->
       <mat-form-field *ngIf="!isAadhar" class="example-full-width">
-        <input matInput type="number" placeholder="Aadhar Enrolment ID" formControlName="aadharEnrolID" [errorStateMatcher]="matcher">
-        <mat-hint>Note: If Aadhaar Number is not yet allotted, then Aadhaar Enrolment Id is required. All the digits in enrolment ID & Date and time of enrolment to be entered continuously. For example Enrolment ID: 1234/12345/12345 & Date/Time of enrolment: 01/12/2016 11:50:22 to be entered as 1234123451234501122016115022</mat-hint>
+        <input matInput placeholder="Aadhar Enrolment ID" formControlName="aadharEnrolID" [errorStateMatcher]="matcher" 
+          maxlength="28">
+        <mat-hint>Note: If Aadhaar Number is not yet allotted, then Aadhaar Enrolment Id is required. 
+          All the digits in enrolment ID & Date and time of enrolment to be entered continuously. 
+          For example Enrolment ID: 1234/12345/12345 & Date/Time of enrolment: 01/12/2016 11:50:22 to be entered as 1234123451234501122016115022
+        </mat-hint>
       </mat-form-field>
 
       <!-- DOB-->
@@ -98,7 +114,7 @@
         <input matInput placeholder="Country" formControlName="country" required>
       </mat-form-field>
       <mat-form-field class="example-half-width">
-        <input matInput type="number" maxlength="6" placeholder="Pincode" formControlName="zip" required>
+        <input matInput maxlength="6" placeholder="Pincode" formControlName="zip" required>
       </mat-form-field>
 
       

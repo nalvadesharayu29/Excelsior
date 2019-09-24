@@ -4,6 +4,7 @@ import {ErrorStateMatcher} from '@angular/material/core';
 import {FormControl, FormGroupDirective, FormGroup, NgForm, Validators, FormBuilder} from '@angular/forms';
 import { AuthService } from 'src/app/_services/ITR/auth.service';
 import { User } from 'src/app/_models/User';
+import { AlertifyService } from 'src/app/_services/shared/alertify.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -22,7 +23,8 @@ export class ItrFormComponent implements OnInit {
   userDetailsForm: FormGroup;
   isAadhar = true;
   user: User;
-  constructor(private router: Router, private fb: FormBuilder, private authservice: AuthService) { }
+  constructor(private router: Router, private fb: FormBuilder, private authservice: AuthService,
+              private alertify: AlertifyService) { }
 
   ngOnInit() {
     this.createUserDetailsForm();
@@ -48,10 +50,12 @@ export class ItrFormComponent implements OnInit {
       aadharNo: ['',
         [
           Validators.pattern('[0-9]{12}'),
-          Validators.required,
         ]],
       isAadhar: [''],
-      aadharEnrolID: [''],
+      aadharEnrolID: ['',
+      [
+        Validators.pattern('[0-9]{28}'),
+      ]],
       panNo: ['',
         [
           Validators.required,
@@ -62,7 +66,11 @@ export class ItrFormComponent implements OnInit {
         city: ['', Validators.required],
         state: ['', Validators.required],
         country: ['', Validators.required],
-        zip: ['', Validators.required],
+        zip: ['',
+        [
+          Validators.required,
+          Validators.pattern('[0-9]{6}'),
+        ]],
         landmark: ['']
       // bankInfo: this.fb.group({
       //   name: ['', Validators.required],
@@ -82,13 +90,34 @@ export class ItrFormComponent implements OnInit {
 
   saveUserDetails() {
     if (this.userDetailsForm.valid) {
-      this.user = Object.assign({}, this.userDetailsForm.value);
+      if (this.isAadhar) {
+        if (this.userDetailsForm.controls['aadharNo'].value === '') {
+          alert('Please enter Aadhar Number');
+        } else {
+          this.user = Object.assign({}, this.userDetailsForm.value);
+        }
+      } else {
+        if (this.userDetailsForm.controls['aadharEnrolID'].value === '') {
+          alert('Please enter Aadhar Enrollment ID');
+        } else {
+          this.user = Object.assign({}, this.userDetailsForm.value);
+        }
+      }
+
       console.log('user-Details: ', this.user);
+
+    } else  {
+      console.log('user form invalid');
     }
   }
 
   isAadharChanged() {
     this.isAadhar = !this.isAadhar;
+    if (this.isAadhar) {
+      this.userDetailsForm.controls['aadharEnrolID'].setValue('');
+    } else {
+      this.userDetailsForm.controls['aadharNo'].setValue('');
+    }
     console.log('this.isAadhar', this.isAadhar);
   }
 }
