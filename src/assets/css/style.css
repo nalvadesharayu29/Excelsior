@@ -97,9 +97,13 @@ body:after {
 
 .site-section {
   padding: 2.5em 0; }
-  @media (min-width: 768px) {
-    .site-section {
-      padding: 8em 0; } }
+
+  @media (min-width: 768px) 
+  {
+  .site-section {
+      padding: 0em 0; } 
+  }
+
   .site-section.site-section-sm {
     padding: 4em 0; }
 
@@ -108,16 +112,23 @@ body:after {
   margin-bottom: 0px;
   position: relative;
   font-size: 2.5rem; }
-  @media (min-width: 768px) {
+
+  @media (min-width: 768px) 
+  {
     .site-section-heading {
-      font-size: 3rem; } }
+      font-size: 3rem; } 
+  }
 
 .site-footer {
   padding: 4em 0;
   background: #343a40; }
-  @media (min-width: 768px) {
+
+  @media (min-width: 768px) 
+  {
     .site-footer {
-      padding: 8em 0; } }
+      padding: 8em 0; } 
+  }
+
   .site-footer .border-top {
     border-top: 1px solid rgba(255, 255, 255, 0.1) !important; }
   .site-footer p {

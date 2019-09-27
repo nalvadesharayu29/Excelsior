@@ -1,11 +1,11 @@
 <mat-toolbar class="navBar">
   <mat-toolbar-row>
-    <span><img src="assets/images/Excelsior_logo1.jpg" class="logoimg"></span>
+    <span><img src="assets/images/logo_new.jpg" class="logoimg"></span>
     <span class="example-fill-remaining-space"></span>
-    <span class="align-center"><h1 class="text-primary">Excelsior</h1></span>
+    <span class="align-center"><h1 class="text-primary">Xcelsior_Biztek</h1></span>
     <span class="example-spacer"></span>
 
-    <button *ngIf="!btnLoginClick && !loggedIn()" mat-button class="btnLognIN" (click)="loginClick()">Log IN / Sign UP</button>
+    <!-- <button *ngIf="!btnLoginClick && !loggedIn()" mat-button class="btnLognIN" (click)="loginClick()">Log IN / Sign UP</!--> -->
     <ul *ngIf="loggedIn()" class="navbar-nav mr-right">     
         <li class="nav-item dropdown" dropdown>
           <a class="nav-link dropdown-toggle" (click)="logout()" id="dropdown03" dropdownToggle>Welcome {{authService.decodedToken?.unique_name}}</a>

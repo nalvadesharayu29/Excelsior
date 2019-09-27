@@ -25,6 +25,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { AuthService } from './_services/ITR/auth.service';
 import { ErrorInterceptor, ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AlertifyService } from './_services/shared/alertify.service';
+import { MessageService } from './_services/message.service';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -65,7 +66,8 @@ export function tokenGetter() {
       AuthService,
       AuthGuard,
       ErrorInterceptorProvider,
-      AlertifyService
+      AlertifyService,
+      MessageService
    ],
    bootstrap: [
       AppComponent

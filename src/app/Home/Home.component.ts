@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from '../_services/message.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./Home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  model: any = {};
+  constructor(private router: Router, private msgService: MessageService) { }
 
   ngOnInit() {
+  }
+
+  sendMessage() {
+    this.msgService.sendMessage(this.model).subscribe();
   }
 }
