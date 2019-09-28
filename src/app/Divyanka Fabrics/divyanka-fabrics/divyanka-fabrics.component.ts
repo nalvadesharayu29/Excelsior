@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'src/app/_services/message.service';
 
 @Component({
   selector: 'app-divyanka-fabrics',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./divyanka-fabrics.component.css']
 })
 export class DivyankaFabricsComponent implements OnInit {
+model: any =  {};
 
-  constructor() { }
+  constructor(private msgService: MessageService) { }
 
   ngOnInit() {
+  }
+
+  sendMessage() {
+    this.msgService.sendMessage(this.model).subscribe();
   }
 
 }
